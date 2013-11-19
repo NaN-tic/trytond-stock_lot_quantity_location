@@ -5,7 +5,6 @@ from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import PoolMeta
 from trytond.pyson import PYSONEncoder
-from trytond.transaction import Transaction
 
 __all__ = ['LotByLocationStart', 'LotByLocation']
 __metaclass__ = PoolMeta
