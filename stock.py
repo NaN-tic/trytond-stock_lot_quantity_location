@@ -3,7 +3,7 @@
 #the full copyright notices and license terms.
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import PYSONEncoder
 
 __all__ = ['LotByLocationStart', 'LotByLocation']
@@ -14,6 +14,13 @@ class LotByLocationStart(ModelView):
     'Lot By Location'
     __name__ = 'lot.by.location.start'
     location = fields.Many2One('stock.location', 'Location', required=True)
+
+    @classmethod
+    def default_location(cls):
+        Location = Pool().get('stock.location')
+        locations = Location.search([('type', '=', 'warehouse')])
+        if len(locations) == 1:
+            return locations[0].id
 
 
 class LotByLocation(Wizard):
