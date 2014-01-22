@@ -1,0 +1,47 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:lot.by.location.start,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:lot.by.location.start,location:"
+msgid "Location"
+msgstr "Emplacement"
+
+msgctxt "model:ir.action,name:act_lot_by_location"
+msgid "Quantity by location"
+msgstr "Qté par emplacement"
+
+msgctxt "model:ir.action,name:act_lot_by_location_tree"
+msgid "Quantity by location"
+msgstr "Qté par emplacement"
+
+msgctxt "model:ir.action,name:wizard_lot_by_location"
+msgid "Quantity by location"
+msgstr "Qté par emplacement"
+
+msgctxt "model:ir.ui.menu,name:menu_act_lot_by_location"
+msgid "Quantity by location"
+msgstr "Qté par emplacement"
+
+msgctxt "model:lot.by.location.start,name:"
+msgid "Lot By Location"
+msgstr "Lot par emplacement"
+
+msgctxt "view:lot.by.location.start:"
+msgid "Quantity by location"
+msgstr "Qté par emplacement"
+
+msgctxt "view:stock.lot:"
+msgid "Quantity by location"
+msgstr "Qté par emplacement"
+
+msgctxt "wizard_button:lot.by_location,start,end:"
+msgid "Cancel"
+msgstr "Annuler"
+
+msgctxt "wizard_button:lot.by_location,start,open:"
+msgid "Get quantities"
+msgstr "Obtenez les qté."
