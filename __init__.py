@@ -7,6 +7,7 @@ from .stock import *
 
 def register():
     Pool.register(
+        Move,
         LotByLocationStart,
         module='stock_lot_quantity_location', type_='model')
     Pool.register(

@@ -1,13 +1,25 @@
 #This file is part stock_lot_quantity_location module for Tryton.
-#The COPYRIGHT file at the top level of this repository contains 
+#The COPYRIGHT file at the top level of this repository contains
 #the full copyright notices and license terms.
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import PYSONEncoder
+from trytond.pyson import PYSONEncoder, If, Eval, Bool
 
-__all__ = ['LotByLocationStart', 'LotByLocation']
+__all__ = ['Move', 'LotByLocationStart', 'LotByLocation']
 __metaclass__ = PoolMeta
+
+
+class Move:
+    __name__ = 'stock.move'
+
+    @classmethod
+    def __setup__(cls):
+        super(Move, cls).__setup__()
+        cls.lot.context.update({
+            'locations': If(Bool(Eval('from_location')),
+                [Eval('from_location')], []),
+            })
 
 
 class LotByLocationStart(ModelView):
