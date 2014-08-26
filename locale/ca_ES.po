@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:lot.by.location.start,forecast_date:"
+msgid "At Date"
+msgstr "A data"
+
 msgctxt "field:lot.by.location.start,id:"
 msgid "ID"
 msgstr "ID"
@@ -9,6 +13,20 @@ msgstr "ID"
 msgctxt "field:lot.by.location.start,location:"
 msgid "Location"
 msgstr "Ubicació"
+
+msgctxt "field:lot.by.location.start,lot:"
+msgid "Lot"
+msgstr "Lot"
+
+msgctxt "help:lot.by.location.start,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Permet calcular les quantitats previstes d'estoc per a aquesta data.\n"
+"* Un valor buit és un data infinita en el futur.\n"
+"* Una data en el passat proporcionarà valors històrics."
 
 msgctxt "model:ir.action,name:act_lot_by_location"
 msgid "Quantity by location"
@@ -44,4 +62,4 @@ msgstr "Cancel·la"
 
 msgctxt "wizard_button:lot.by_location,start,open:"
 msgid "Get quantities"
-msgstr "Quantitats"
+msgstr "Obté quantitats"
