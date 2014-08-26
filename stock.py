@@ -6,6 +6,7 @@ from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import PYSONEncoder, If, Eval, Bool, Date
+from trytond.transaction import Transaction
 
 __all__ = ['Move', 'LotByLocationStart', 'LotByLocation']
 __metaclass__ = PoolMeta
@@ -32,9 +33,10 @@ class LotByLocationStart(ModelView):
             'stock quantities for this date.\n'
             '* An empty value is an infinite date in the future.\n'
             '* A date in the past will provide historical values.'))
+    lot = fields.Many2One('stock.lot', 'Lot',)
 
-    @classmethod
-    def default_location(cls):
+    @staticmethod
+    def default_location():
         Location = Pool().get('stock.location')
         locations = Location.search([('type', '=', 'warehouse')])
         if len(locations) == 1:
@@ -44,6 +46,13 @@ class LotByLocationStart(ModelView):
     def default_forecast_date():
         Date_ = Pool().get('ir.date')
         return Date_.today()
+
+    @staticmethod
+    def default_lot():
+        model = Transaction().context.get('active_model')
+        if model == 'stock.lot':
+            return Transaction().context.get('active_id')
+        return None
 
 
 class LotByLocation(Wizard):
@@ -65,4 +74,7 @@ class LotByLocation(Wizard):
         context['locations'] = [self.start.location.id]
         action['pyson_context'] = PYSONEncoder().encode(context)
         action['name'] += ' - %s' % (location.rec_name)
+        if self.start.lot:
+            domain = [('id', '=', self.start.lot.id)]
+            action['pyson_domain'] = PYSONEncoder().encode(domain)
         return action, {}
