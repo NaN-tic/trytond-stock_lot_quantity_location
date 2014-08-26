@@ -1,10 +1,11 @@
 #This file is part stock_lot_quantity_location module for Tryton.
 #The COPYRIGHT file at the top level of this repository contains
 #the full copyright notices and license terms.
+import datetime
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import PYSONEncoder, If, Eval, Bool
+from trytond.pyson import PYSONEncoder, If, Eval, Bool, Date
 
 __all__ = ['Move', 'LotByLocationStart', 'LotByLocation']
 __metaclass__ = PoolMeta
@@ -26,6 +27,11 @@ class LotByLocationStart(ModelView):
     'Lot By Location'
     __name__ = 'lot.by.location.start'
     location = fields.Many2One('stock.location', 'Location', required=True)
+    forecast_date = fields.Date(
+        'At Date', help=('Allow to compute expected '
+            'stock quantities for this date.\n'
+            '* An empty value is an infinite date in the future.\n'
+            '* A date in the past will provide historical values.'))
 
     @classmethod
     def default_location(cls):
@@ -33,6 +39,11 @@ class LotByLocationStart(ModelView):
         locations = Location.search([('type', '=', 'warehouse')])
         if len(locations) == 1:
             return locations[0].id
+
+    @staticmethod
+    def default_forecast_date():
+        Date_ = Pool().get('ir.date')
+        return Date_.today()
 
 
 class LotByLocation(Wizard):
@@ -49,6 +60,8 @@ class LotByLocation(Wizard):
         location = self.start.location
 
         context = {}
+        date = self.start.forecast_date or datetime.date.max
+        context['stock_date_end'] = Date(date.year, date.month, date.day)
         context['locations'] = [self.start.location.id]
         action['pyson_context'] = PYSONEncoder().encode(context)
         action['name'] += ' - %s' % (location.rec_name)

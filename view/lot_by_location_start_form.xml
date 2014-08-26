@@ -4,4 +4,6 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
 <form string="Quantity by location">
     <label name="location"/>
     <field name="location"/>
+    <label name="forecast_date"/>
+    <field name="forecast_date"/>
 </form>
