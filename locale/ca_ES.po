@@ -36,6 +36,10 @@ msgctxt "model:ir.action,name:act_lot_by_location_tree"
 msgid "Quantity by location"
 msgstr "Quantitat per ubicació"
 
+msgctxt "model:ir.action,name:act_stock_lot_quantity_location"
+msgid "Lot Quantity for all locations"
+msgstr "Quantitats de lot per a totes les ubicacions"
+
 msgctxt "model:ir.action,name:wizard_lot_by_location"
 msgid "Quantity by location"
 msgstr "Quantitat per ubicació"
@@ -43,6 +47,10 @@ msgstr "Quantitat per ubicació"
 msgctxt "model:ir.ui.menu,name:menu_act_lot_by_location"
 msgid "Quantity by location"
 msgstr "Quantitat per ubicació"
+
+msgctxt "model:ir.ui.menu,name:menu_stock_lot_quantity_location"
+msgid "Lot Quantity for all locations"
+msgstr "Quantitats de lot per a totes les ubicacions"
 
 msgctxt "model:lot.by.location.start,name:"
 msgid "Lot By Location"
