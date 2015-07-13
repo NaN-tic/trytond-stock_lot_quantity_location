@@ -10,13 +10,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="name">lot_by_location_view_tree</field>
         </record>
 
-        <!-- View wizard -->
-        <record model="ir.ui.view" id="lot_by_location_start_view_form">
-            <field name="model">lot.by.location.start</field>
-            <field name="type">form</field>
-            <field name="name">lot_by_location_start_form</field>
-        </record>
-        
+        <!-- View wizard -->        
         <record model="ir.action.act_window" id="act_lot_by_location_tree">
             <field name="name">Quantity by location</field>
             <field name="res_model">stock.lot</field>
@@ -43,5 +37,27 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         </record>
         <menuitem parent="stock_lot.menu_lot_form" sequence="20"
             action="act_lot_by_location" id="menu_act_lot_by_location"/>
+        <record model="ir.ui.view" id="lot_by_location_start_view_form">
+            <field name="model">lot.by.location.start</field>
+            <field name="type">form</field>
+            <field name="name">lot_by_location_start_form</field>
+        </record>
+        
+        <record model="ir.action.act_window" id="act_stock_lot_quantity_location">
+            <field name="name">Lot Quantity by location</field>
+            <field name="res_model">stock.lot</field>
+            <field name="domain"></field>
+            <field name="search_value">[('expiry_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0))]</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_stock_lot_quantity_location_tree_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="lot_by_location_view_tree"/>
+            <field name="act_window" ref="act_stock_lot_quantity_location"/>
+        </record>
+        <menuitem
+            id="menu_stock_lot_quantity_location"
+            parent="stock_lot.menu_lot_form"
+            action="act_stock_lot_quantity_location"
+            sequence="30"/>
     </data>
 </tryton>

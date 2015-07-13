@@ -8,8 +8,22 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import PYSONEncoder, If, Eval, Bool, Date
 from trytond.transaction import Transaction
 
-__all__ = ['Move', 'LotByLocationStart', 'LotByLocation']
+__all__ = ['Lot', 'Move', 'LotByLocationStart', 'LotByLocation']
 __metaclass__ = PoolMeta
+
+
+class Lot:
+    __name__ = 'stock.lot'
+
+    @classmethod
+    def get_quantity(cls, lots, name):
+        locations = Pool().get('stock.location').search([
+                ('type', '=', 'storage')
+                ])
+        transaction = Transaction()
+        if 'locations' not in transaction.context:
+            transaction.set_context({'locations': [l.id for l in locations]})
+        return super(Lot, cls).get_quantity(lots, name)
 
 
 class Move:
