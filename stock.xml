@@ -42,26 +42,24 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="type">form</field>
             <field name="name">lot_by_location_start_form</field>
         </record>
+    </data>
 
-        <!-- Stock Lot Expiry -->
-        <record model="ir.action.act_window" id="act_stock_lot_expiry_date">
+    <data depends="stock_lot_expiry">
+        <record model="ir.action.act_window" id="act_stock_lot_quantity_location">
             <field name="name">Lot Expiry Date</field>
             <field name="res_model">stock.lot</field>
             <field name="domain"></field>
             <field name="search_value">[('expiry_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0))]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_stock_lot_quantity_expiry_date_view">
+        <record model="ir.action.act_window.view" id="act_stock_lot_quantity_location_tree_view">
             <field name="sequence" eval="10"/>
             <field name="view" ref="lot_by_location_view_tree"/>
-            <field name="act_window" ref="act_stock_lot_expiry_date"/>
+            <field name="act_window" ref="act_stock_lot_quantity_location"/>
         </record>
-    </data>
-
-    <data depends="stock_lot_expiry">
         <menuitem
-            id="menu_stock_lot_expiry_date"
+            id="menu_stock_lot_quantity_location"
             parent="stock_lot.menu_lot_form"
-            action="act_stock_lot_expiry_date"
+            action="act_stock_lot_quantity_location"
             sequence="30"/>
     </data>
 </tryton>
