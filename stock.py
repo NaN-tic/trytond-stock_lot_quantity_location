@@ -26,6 +26,17 @@ class Lot:
                 return super(Lot, cls).get_quantity(lots, name)
         return super(Lot, cls).get_quantity(lots, name)
 
+    @classmethod
+    def search_quantity(cls, name, domain=None):
+        Location = Pool().get('stock.location')
+
+        if 'locations' not in Transaction().context:
+            warehouses = Location.search([('type', '=', 'warehouse')])
+            location_ids = [w.storage_location.id for w in warehouses]
+            with Transaction().set_context(locations=location_ids):
+                return super(Lot, cls).search_quantity(name, domain)
+        return super(Lot, cls).search_quantity(name, domain)
+
 
 class Move:
     __name__ = 'stock.move'
