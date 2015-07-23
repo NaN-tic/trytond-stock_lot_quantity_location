@@ -42,11 +42,9 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="type">form</field>
             <field name="name">lot_by_location_start_form</field>
         </record>
-    </data>
-
-    <data depends="stock_lot_expiry">
+        
         <record model="ir.action.act_window" id="act_stock_lot_quantity_location">
-            <field name="name">Lot Expiry Date</field>
+            <field name="name">Lot Quantity for all locations</field>
             <field name="res_model">stock.lot</field>
             <field name="domain"></field>
             <field name="search_value">[('expiry_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0))]</field>
