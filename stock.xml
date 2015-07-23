@@ -47,7 +47,6 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="name">Lot Quantity for all locations</field>
             <field name="res_model">stock.lot</field>
             <field name="domain"></field>
-            <field name="search_value">[('expiry_date', '>=', DateTime(hour=0, minute=0, second=0, microsecond=0))]</field>
         </record>
         <record model="ir.action.act_window.view" id="act_stock_lot_quantity_location_tree_view">
             <field name="sequence" eval="10"/>
@@ -60,4 +59,13 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             action="act_stock_lot_quantity_location"
             sequence="30"/>
     </data>
+
+    <data depends="stock_lot_expiry">
+        <record model="ir.ui.view" id="lot_by_location_dates_view_tree">
+            <field name="model">stock.lot</field>
+            <field name="type">tree</field>
+            <field name="inherit" ref="lot_by_location_view_tree"/>
+            <field name="name">lot_by_location_dates_view_tree</field>
+        </record>
+     </data>
 </tryton>
