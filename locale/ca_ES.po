@@ -36,6 +36,15 @@ msgctxt "model:ir.action,name:act_lot_by_location_tree"
 msgid "Quantity by location"
 msgstr "Quantitat per ubicació"
 
+msgctxt "model:ir.action,name:act_lot_form_relate"
+msgid "Lots"
+msgstr "Lots"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lot_form_relate2"
+msgid "Lots"
+msgstr "Lots"
+
 msgctxt "model:ir.action,name:act_stock_lot_quantity_location"
 msgid "Lot Quantity for all locations"
 msgstr "Quantitat lots per totes les ubicacions"

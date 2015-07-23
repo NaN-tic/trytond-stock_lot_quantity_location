@@ -3,14 +3,29 @@
 The COPYRIGHT file at the top level of this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <!-- View tree results-->
+        <!-- Menu lot quantity -->
         <record model="ir.ui.view" id="lot_by_location_view_tree">
             <field name="model">stock.lot</field>
             <field name="type">tree</field>
             <field name="name">lot_by_location_view_tree</field>
         </record>
+        <record model="ir.action.act_window" id="act_stock_lot_quantity_location">
+            <field name="name">Lot Quantity for all locations</field>
+            <field name="res_model">stock.lot</field>
+            <field name="domain"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_stock_lot_quantity_location_tree_view">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="lot_by_location_view_tree"/>
+            <field name="act_window" ref="act_stock_lot_quantity_location"/>
+        </record>
+        <menuitem
+            id="menu_stock_lot_quantity_location"
+            parent="stock_lot.menu_lot_form"
+            action="act_stock_lot_quantity_location"
+            sequence="30"/>
 
-        <!-- View wizard -->        
+        <!-- Wizard lot quantity by location -->        
         <record model="ir.action.act_window" id="act_lot_by_location_tree">
             <field name="name">Quantity by location</field>
             <field name="res_model">stock.lot</field>
@@ -42,25 +57,32 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             <field name="type">form</field>
             <field name="name">lot_by_location_start_form</field>
         </record>
-        
-        <record model="ir.action.act_window" id="act_stock_lot_quantity_location">
-            <field name="name">Lot Quantity for all locations</field>
+
+        <!-- Shortcuts from product and product template to lots -->
+        <record model="ir.action.act_window" id="act_lot_form_relate">
+            <field name="name">Lots</field>
             <field name="res_model">stock.lot</field>
-            <field name="domain"></field>
+            <field name="domain">[('product', 'in', Eval('active_ids'))]</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_stock_lot_quantity_location_tree_view">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="lot_by_location_view_tree"/>
-            <field name="act_window" ref="act_stock_lot_quantity_location"/>
+        <record model="ir.action.keyword" id="act_open_lot_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_lot_form_relate"/>
         </record>
-        <menuitem
-            id="menu_stock_lot_quantity_location"
-            parent="stock_lot.menu_lot_form"
-            action="act_stock_lot_quantity_location"
-            sequence="30"/>
+        <record model="ir.action.act_window" id="act_lot_form_relate2">
+            <field name="name">Lots</field>
+            <field name="res_model">stock.lot</field>
+            <field name="domain">[('product.template', 'in', Eval('active_ids'))]</field>
+        </record>
+        <record model="ir.action.keyword" id="act_open_lot_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_lot_form_relate2"/>
+        </record>
     </data>
 
     <data depends="stock_lot_expiry">
+        <!-- Improved lot quantity tree view with expiry dates -->
         <record model="ir.ui.view" id="lot_by_location_dates_view_tree">
             <field name="model">stock.lot</field>
             <field name="type">tree</field>
