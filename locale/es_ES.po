@@ -40,7 +40,6 @@ msgctxt "model:ir.action,name:act_lot_form_relate"
 msgid "Lots"
 msgstr "Lotes"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lot_form_relate2"
 msgid "Lots"
 msgstr "Lotes"
