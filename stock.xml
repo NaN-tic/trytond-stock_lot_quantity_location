@@ -6,7 +6,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         <!-- Menu lot quantity -->
         <record model="ir.ui.view" id="lot_by_location_view_tree">
             <field name="model">stock.lot</field>
-            <field name="type">tree</field>
+            <field name="type" eval="None"/>
             <field name="name">lot_by_location_view_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_stock_lot_quantity_location">
@@ -89,7 +89,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         <!-- Improved lot quantity tree view with expiry dates -->
         <record model="ir.ui.view" id="lot_by_location_dates_view_tree">
             <field name="model">stock.lot</field>
-            <field name="type">tree</field>
+            <field name="type" eval="None"/>
             <field name="inherit" ref="lot_by_location_view_tree"/>
             <field name="name">lot_by_location_dates_view_tree</field>
         </record>
