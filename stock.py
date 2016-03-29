@@ -9,10 +9,10 @@ from trytond.pyson import PYSONEncoder, If, Eval, Bool, Date
 from trytond.transaction import Transaction
 
 __all__ = ['Lot', 'Move', 'LotByLocationStart', 'LotByLocation']
-__metaclass__ = PoolMeta
 
 
 class Lot:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.lot'
 
     @classmethod
@@ -39,6 +39,7 @@ class Lot:
 
 
 class Move:
+    __metaclass__ = PoolMeta
     __name__ = 'stock.move'
 
     @classmethod
