@@ -25,11 +25,10 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
             action="act_stock_lot_quantity_location"
             sequence="30"/>
 
-        <!-- Wizard lot quantity by location -->        
+        <!-- Wizard lot quantity by location -->
         <record model="ir.action.act_window" id="act_lot_by_location_tree">
             <field name="name">Quantity by location</field>
             <field name="res_model">stock.lot</field>
-            <field name="window_name" eval="True"/>
         </record>
         <record model="ir.action.act_window.view" id="act_lot_by_location_tree_view">
             <field name="sequence" eval="10"/>
