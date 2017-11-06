@@ -85,7 +85,7 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         </record>
     </data>
 
-    <data depends="stock_lot_expiry">
+    <data depends="stock_lot_sled">
         <!-- Improved lot quantity tree view with expiry dates -->
         <record model="ir.ui.view" id="lot_by_location_dates_view_tree">
             <field name="model">stock.lot</field>
