@@ -11,8 +11,7 @@ from trytond.transaction import Transaction
 __all__ = ['Lot', 'Move', 'LotByLocationStart', 'LotByLocation']
 
 
-class Lot:
-    __metaclass__ = PoolMeta
+class Lot(metaclass=PoolMeta):
     __name__ = 'stock.lot'
 
     @classmethod
@@ -38,8 +37,7 @@ class Lot:
         return super(Lot, cls).search_quantity(name, domain)
 
 
-class Move:
-    __metaclass__ = PoolMeta
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
     @classmethod
