@@ -88,7 +88,6 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
         <!-- Improved lot quantity tree view with expiry dates -->
         <record model="ir.ui.view" id="lot_by_location_expiry_dates_view_tree">
             <field name="model">stock.lot</field>
-            <field name="type" eval="None"/>
             <field name="inherit" ref="lot_by_location_view_tree"/>
             <field name="name">lot_by_location_expiry_dates_view_tree</field>
         </record>
@@ -98,7 +97,6 @@ The COPYRIGHT file at the top level of this repository contains the full copyrig
          <!-- Improved lot quantity tree view with sled dates -->
          <record model="ir.ui.view" id="lot_by_location_sled_dates_view_tree">
              <field name="model">stock.lot</field>
-             <field name="type">tree</field>
              <field name="inherit" ref="lot_by_location_view_tree"/>
              <field name="name">lot_by_location_sled_dates_view_tree</field>
          </record>
