@@ -8,8 +8,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import PYSONEncoder, If, Eval, Bool, Date
 from trytond.transaction import Transaction
 
-__all__ = ['Lot', 'Move', 'LotByLocationStart', 'LotByLocation']
-
 
 class Lot(metaclass=PoolMeta):
     __name__ = 'stock.lot'
