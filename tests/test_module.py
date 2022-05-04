@@ -9,6 +9,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 class StockLotQuantityLocationTestCase(CompanyTestMixin, ModuleTestCase):
     'Test StockLotQuantityLocation module'
     module = 'stock_lot_quantity_location'
+    extras = ['stock_lot_sled']
 
 
 del ModuleTestCase
